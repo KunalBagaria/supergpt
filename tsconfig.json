@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "db": ["./src/lib/prisma"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
