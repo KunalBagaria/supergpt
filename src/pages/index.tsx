@@ -5,13 +5,8 @@ import { HeadComponent } from '@/components/head';
 
 // Stylesheet Imports
 import styles from '@/styles/Home.module.scss'
+import { User } from '@/lib/interfaces';
 import { LoggedOutPage } from '@/components/logged-out'
-
-interface User {
-  id: string;
-  auth: string;
-  credits: number;
-}
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null);
@@ -19,20 +14,16 @@ export default function Home() {
   useEffect(() => {
     console.log(localStorage);
     const user = localStorage.getItem('user');
-    if (user) {
+    if (user && typeof user === 'string') {
       setUser(JSON.parse(user));
     }
   }, []);
-
-  async function handleRegister() {
-
-  }
 
   return (
     <>
       <HeadComponent />
       {!user && (
-        <LoggedOutPage />
+        <LoggedOutPage setParentUser={setUser} />
       )}
     </>
   );

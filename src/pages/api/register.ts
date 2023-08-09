@@ -26,7 +26,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         id: address
       }
     });
-    res.status(200).json({ success: true, message: 'User created' });
+    res.status(200).json({ success: true, message: 'User created', user: newUser });
   } catch (e) {
     res.status(500).json({ success: false, error: e });
   }

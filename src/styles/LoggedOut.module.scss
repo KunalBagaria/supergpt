@@ -56,4 +56,7 @@
   &:hover {
     background: var(--hover-color);
   }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
