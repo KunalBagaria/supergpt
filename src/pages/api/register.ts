@@ -16,7 +16,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       where: { id: address },
     });
     if (user) {
-      res.status(200).json({ success: true, message: 'User already exists' });
+      res.status(200).json({ success: true, message: 'User already exists', user });
       return;
     }
     const authenticated = authenticate(address, signature, res);

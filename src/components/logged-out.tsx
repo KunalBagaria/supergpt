@@ -3,52 +3,38 @@ import logo from '@/images/supergpt-lg.svg';
 import chat from '@/images/chat.svg';
 import styles from '@/styles/LoggedOut.module.scss';
 
-import { User } from '@/lib/interfaces';
+import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { ConnectWallet } from './wallet';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { getUserSignature } from "@/lib/signMessage";
 import { handleRegisterRequest } from '@/lib/networkRequests';
 
-function LoggedOutPage({
-  setParentUser
-}: {
-  setParentUser: (user: User) => void;
-}) {
+function LoggedOutPage() {
   const wallet = useWallet();
   const [clicked, setClicked] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    console.log(localStorage);
-    const user = localStorage.getItem('user');
-    if (user && typeof user === 'string') {
-      setUser(JSON.parse(user));
-    }
-  }, []);
 
   async function handleRegister() {
     if (!wallet.signMessage || !wallet.publicKey) return;
     const signature = await getUserSignature(wallet.signMessage);
     if (!signature) return;
-    const data = await handleRegisterRequest(wallet.publicKey.toBase58(), signature);
+    const request = handleRegisterRequest(wallet.publicKey.toBase58(), signature);
+    toast.promise(request, {
+      loading: "Signing in",
+      success: "You're signed in",
+      error: "Error signing in"
+    });
+    const data = await request;
     console.log(data);
     if (data.success) {
       const modifiedUser = { ...data.user, auth: signature };
       localStorage.setItem('user', JSON.stringify(modifiedUser));
-      setUser(modifiedUser);
-      setParentUser(modifiedUser);
     }
-    setLoading(false);
   }
 
   useEffect(() => {
-    if (clicked && !loading) {
-      setLoading(true);
-      handleRegister();
-    }
-  }, [clicked]);
+    if (clicked) handleRegister();
+  }, [clicked, wallet.publicKey]);
 
   return (
     <main className={styles.main}>
@@ -56,9 +42,9 @@ function LoggedOutPage({
         <div className={styles.leftSection}>
           <Image src={logo} alt="SuperGPT" />
           <p>{"Please connect your wallet to continue"}</p>
-          <ConnectWallet>
+          <ConnectWallet noToast={true}>
             <button onClick={() => setClicked(!clicked)} className={styles.connect}>
-              {"CONNECT WALLET AND REGISTER"}
+              {"CONNECT WALLET AND SIGN IN"}
             </button>
           </ConnectWallet>
         </div>

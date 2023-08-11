@@ -7,23 +7,15 @@ import { HeadComponent } from '@/components/head';
 import styles from '@/styles/Home.module.scss'
 import { User } from '@/lib/interfaces';
 import { LoggedOutPage } from '@/components/logged-out'
+import { useUser } from '@/components/context';
 
 export default function Home() {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    console.log(localStorage);
-    const user = localStorage.getItem('user');
-    if (user && typeof user === 'string') {
-      setUser(JSON.parse(user));
-    }
-  }, []);
-
+  const user = useUser();
   return (
     <>
       <HeadComponent />
       {!user && (
-        <LoggedOutPage setParentUser={setUser} />
+        <LoggedOutPage />
       )}
     </>
   );
