@@ -8,6 +8,7 @@ import styles from '@/styles/Home.module.scss'
 import { User } from '@/lib/interfaces';
 import { LoggedOutPage } from '@/components/logged-out'
 import { useUser } from '@/components/context';
+import { LoggedInPage } from '@/components/logged-in';
 
 export default function Home() {
   const user = useUser();
@@ -16,6 +17,9 @@ export default function Home() {
       <HeadComponent />
       {!user && (
         <LoggedOutPage />
+      )}
+      {user && (
+        <LoggedInPage />
       )}
     </>
   );
