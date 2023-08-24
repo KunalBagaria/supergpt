@@ -10,6 +10,9 @@
   width: 100%;
   background-color: var(--sidebar-bg);
   border-right: 0.0625rem solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
@@ -56,4 +59,35 @@
   border: 0.1rem solid var(--purple);
   background-color: var(--light-purple);
   color: var(--purple);
+}
+
+.newChat {
+  margin-top: 1.5rem;
+  width: 18.25rem;
+  height: 2.8125rem;
+  flex-shrink: 0;
+  border-radius: 0.3125rem;
+  background: var(--light-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0rem;
+  outline: none;
+  cursor: pointer;
+  color: var(--purple);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  & > img {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    left: 0.69rem;
+  }
+  &:hover {
+    background-color: var(--light-purple-hover);
+    & > img {
+      transform: rotate(180deg);
+    }
+  }
 }

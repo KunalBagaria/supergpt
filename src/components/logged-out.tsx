@@ -41,10 +41,10 @@ function LoggedOutPage() {
       <div className={styles.content}>
         <div className={styles.leftSection}>
           <Image src={logo} alt="SuperGPT" />
-          <p>{"Please connect your wallet to continue"}</p>
+          <p>{"An anonymous, simpler and better version of ChatGPT"}</p>
           <ConnectWallet noToast={true}>
             <button onClick={() => setClicked(!clicked)} className={styles.connect}>
-              {"CONNECT WALLET AND SIGN IN"}
+              {"CONTINUE WITH WALLET"}
             </button>
           </ConnectWallet>
         </div>
