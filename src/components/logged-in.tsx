@@ -49,7 +49,7 @@ function LoggedInPage() {
           <Image src={logo} alt="SuperGPT Logo" />
         </div>
 
-        <button className={styles.newChat}>
+        <button onClick={() => setSelectedThread(null)} className={styles.newChat}>
           <Image src={plus} alt="" />
           {"NEW CHAT"}
         </button>
@@ -66,7 +66,9 @@ function LoggedInPage() {
           ))}
         </div>
 
-        {/* Add Profile Pane */}
+        <div className={styles.profilePane}>
+
+        </div>
       </div>
 
       <div className={styles.content}>
