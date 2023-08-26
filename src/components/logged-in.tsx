@@ -29,7 +29,7 @@ function LoggedInPage() {
     localStorage.setItem("model", _model.toString());
   }
 
-  async function handleChatChange(content: string, role: "user" | "assistant") {
+  function handleChatChange(content: string, role: "user" | "assistant") {
     const message: SavedMessage = {
       content,
       role,
@@ -45,10 +45,11 @@ function LoggedInPage() {
       setSelectedThread(thread);
       setThreads(toUpdateThreads);
       localStorage.setItem("threads", JSON.stringify(toUpdateThreads));
+      return thread;
     };
     if (selectedThread) {
       const threadIndex = threads.findIndex((thread) => thread.id === selectedThread.id);
-      if (threadIndex === -1) return;
+      if (threadIndex === -1) return null;
       const updatedThread = threads[threadIndex];
       updatedThread.messages.push(message);
       const newThreads = [...threads];
@@ -56,16 +57,18 @@ function LoggedInPage() {
       setThreads(newThreads);
       setSelectedThread(updatedThread);
       localStorage.setItem("threads", JSON.stringify(newThreads));
+      return updatedThread;
     }
   }
 
   async function handleSendMessage() {
+    if (!input) return;
     if (!wallet.publicKey) return;
     const signature = await getLocalSignature();
     if (!signature) return;
-    handleChatChange(input, "user");
-    if (!selectedThread) return;
-    const mappedMessages = selectedThread.messages.map((message) => { return { content: message.content, role: message.role } });
+    const updatedThread = handleChatChange(input, "user");
+    if (!updatedThread) return;
+    const mappedMessages = updatedThread.messages.map((message) => { return { content: message.content, role: message.role } });
     const response = await handleSendMessageRequest(
       wallet.publicKey.toBase58(),
       signature,
@@ -73,6 +76,7 @@ function LoggedInPage() {
       mappedMessages
     );
     if (!response.success) return;
+    handleChatChange(response.result.choices[0].message.content, "assistant");
     console.log(response);
   }
 
