@@ -5,15 +5,18 @@ interface User {
 }
 
 interface Message {
-  id: number;
   content: string;
   role: "user" | "assistant";
 }
 
-interface Thread {
-  id: string;
-  title: string;
-  messages: Message[];
+interface SavedMessage extends Message {
+  id: number;
 }
 
-export type { User, Message, Thread };
+interface Thread {
+  id: number;
+  title: string;
+  messages: SavedMessage[];
+}
+
+export type { User, Message, SavedMessage, Thread };

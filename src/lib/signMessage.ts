@@ -12,3 +12,13 @@ export const getUserSignature = async (
     console.log('User rejected message signature request');
   }
 };
+
+export const getLocalSignature = (): Uint8Array|null => {
+  const localUser = localStorage.getItem('user');
+  if (localUser) {
+    const user = JSON.parse(localUser);
+    return user.auth;
+  } else {
+    return null;
+  }
+}
