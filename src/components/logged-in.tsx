@@ -15,6 +15,7 @@ import plus from "@/images/plus.svg";
 import styles from "@/styles/LoggedIn.module.scss";
 import { handleSendMessageRequest } from "@/lib/networkRequests";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { MessageComponent } from "./message";
 
 function LoggedInPage() {
   const wallet = useWallet();
@@ -43,6 +44,7 @@ function LoggedInPage() {
       }
       const toUpdateThreads = [thread, ...threads];
       setSelectedThread(thread);
+      console.log(selectedThread);
       setThreads(toUpdateThreads);
       localStorage.setItem("threads", JSON.stringify(toUpdateThreads));
       return thread;
@@ -63,6 +65,7 @@ function LoggedInPage() {
 
   async function handleSendMessage() {
     if (!input) return;
+    setInput("");
     if (!wallet.publicKey) return;
     const signature = await getLocalSignature();
     if (!signature) return;
@@ -120,9 +123,10 @@ function LoggedInPage() {
               onClick={() => setSelectedThread(thread)}
               key={index}
               className={styles.recentThread}
+              style={{ background: selectedThread?.id === thread.id ? "var(--light-purple)" : "" }}
             >
               <p className={styles.recentThreadName}>
-                {trimString(thread.title, 50)}
+                {trimString(thread.title, 45)}
               </p>
             </div>
           ))}
@@ -153,10 +157,14 @@ function LoggedInPage() {
 
         <div className={styles.chatsComponent}>
           <div className={styles.messages}>
+            {selectedThread?.messages.map((message, index) => (
+              <MessageComponent key={index} message={message} />
+            ))}
           </div>
 
           <div className={styles.chatBox}>
             <textarea
+              value={input}
               onChange={(e) => setInput(e.target.value)}
               className={styles.chatField}
               placeholder="Send a message"
