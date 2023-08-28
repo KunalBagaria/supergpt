@@ -103,6 +103,7 @@ function LoggedInPage() {
 
   return (
     <main className={styles.main}>
+      <div className={styles.sidebarPlaceholder} />
       <div className={styles.sidebar}>
         <div className={styles.logo}>
           <Image src={logo} alt="SuperGPT Logo" />
@@ -126,7 +127,7 @@ function LoggedInPage() {
               style={{ background: selectedThread?.id === thread.id ? "var(--light-purple)" : "" }}
             >
               <p className={styles.recentThreadName}>
-                {trimString(thread.title, 45)}
+                {trimString(thread.title, 40)}
               </p>
             </div>
           ))}
@@ -168,6 +169,12 @@ function LoggedInPage() {
               onChange={(e) => setInput(e.target.value)}
               className={styles.chatField}
               placeholder="Send a message"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSendMessage();
+                }
+              }}
             />
             <button onClick={handleSendMessage} className={styles.sendButton}>{"Send"}</button>
           </div>
