@@ -19,4 +19,11 @@ interface Thread {
   messages: SavedMessage[];
 }
 
+export interface Conversation {
+  id: string;
+  name: string;
+  messages: Message[];
+  prompt: string;
+}
+
 export type { User, Message, SavedMessage, Thread };

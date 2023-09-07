@@ -1,19 +1,20 @@
 import Image from "next/image";
-import styles from '@/styles/LoggedIn.module.scss';;
-import { SavedMessage } from "@/lib/interfaces";
+import styles from "@/styles/LoggedIn.module.scss";
+import { Message } from "@/lib/interfaces";
 
-import gpt from '@/images/gpt.svg';
-import user from '@/images/user.svg';
+import gpt from "@/images/gpt.svg";
+import user from "@/images/user.svg";
 
-function MessageComponent({ message }: {
-  message: SavedMessage
-}) {
+function MessageComponent({ message }: { message: Message }) {
   return (
     <div
-      style={{ backgroundColor: message.role === 'user' ? 'rgba(238, 233, 253, 0.40)' : 'transparent' }}
+      style={{
+        backgroundColor:
+          message.role === "user" ? "rgba(238, 233, 253, 0.40)" : "transparent",
+      }}
       className={styles.message}
     >
-      <Image src={message.role === 'user' ? user : gpt} alt="" />
+      <Image src={message.role === "user" ? user : gpt} alt="" />
       <p>{message.content}</p>
     </div>
   );
