@@ -5,21 +5,22 @@
 
 .sidebar {
   height: 100vh;
-  max-width: 21rem;
-  width: 100%;
+  width: 25vw;
   background-color: var(--sidebar-bg);
   border-right: 0.0625rem solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  z-index: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  // z-index: 2;
 }
 
 .sidebarPlaceholder {
   height: 100vh;
-  max-width: 21rem;
-  width: 100%;
+  width: 25vw;
+
 }
 
 .logo {
@@ -33,7 +34,7 @@
 
 .content {
   flex: 1;
-  position: relative;
+  width: 75vw;
   margin-bottom: 7.5rem;
 }
 
@@ -45,9 +46,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.64rem;
-  position: absolute;
   top: 0;
-  z-index: 2;
+  // z-index: 2;
 }
 
 .modelButton {
@@ -74,7 +74,7 @@
 
 .newChat {
   margin-top: 1.5rem;
-  width: 18.25rem;
+  width: 100%;
   height: 2.8125rem;
   flex-shrink: 0;
   border-radius: 0.3125rem;
@@ -104,7 +104,6 @@
 }
 
 .recentThreads {
-  max-width: 18.25rem;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -121,7 +120,7 @@
 }
 
 .recentThread {
-  width: 18.25rem;
+  width: 100%;
   height: 2.6875rem;
   flex-shrink: 0;
   border-radius: 0.4375rem;
@@ -155,23 +154,22 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 3.6rem;
 }
 
 .chatBox {
-  max-width: 55rem;
-  width: 100%;
+  width: 75vw;
   position: fixed;
+  padding-left: 1rem;
+  padding-right: 1rem;
   bottom: 3.3rem;
-  left: 60%;
-  transform: translateX(-60%);
+  // left: 60%;
+  // transform: translateX(-60%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .chatField {
-  width: 48rem;
+  width: 85%;
   height: 2.75rem;
   flex-shrink: 0;
   border-radius: 0.6875rem;
@@ -193,7 +191,8 @@
 }
 
 .sendButton {
-  width: 5.3rem;
+  margin-left: 1rem;
+  width: 12%;
   height: 2.75rem;
   flex-shrink: 0;
   border-radius: 0.6875rem;
@@ -225,4 +224,20 @@
     margin-top: 0.4rem;
     white-space: pre-line;
   }
+}
+
+.noConversation {
+  margin-top: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+  & > p {
+    color: rgba(0, 0, 0, 0.70);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
 }

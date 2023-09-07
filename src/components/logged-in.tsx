@@ -239,7 +239,7 @@ function LoggedInPage() {
         </div>
       ) : (
         <div className={styles.noConversation}>
-          <p>{"Select a conversation to start chatting"}</p>
+          <p>{"Select a conversation or start a new one to start chatting"}</p>
         </div>
       )}
     </main>
