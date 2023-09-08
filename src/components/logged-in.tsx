@@ -21,6 +21,8 @@ import { saveConversation } from "@/lib/conversations";
 import useConversations from "@/hooks/useConversations";
 import BuyCreditsDialog from "./buy-credits-dialog";
 import useUser from "@/hooks/useUser";
+import { PersonIcon } from "@radix-ui/react-icons";
+import { truncatePubkey } from "@/lib/truncate";
 
 function LoggedInPage() {
   const wallet = useWallet();
@@ -196,10 +198,20 @@ function LoggedInPage() {
           ))}
         </div>
 
-        <div className={styles.profilePane}>
-          <p>Credits available: {user?.credits}</p>
-          <BuyCreditsDialog />
-        </div>
+        {user && (
+          <div className={styles.profilePane}>
+            {/* <p>Credits available: {user?.credits}</p>
+          <BuyCreditsDialog /> */}
+            <PersonIcon className={styles.profileIcon} />
+            <div className={styles.profileDetails}>
+              <p className={styles.profileAddress}>
+                {truncatePubkey(user?.id)}
+              </p>
+              <p>{user?.credits} credits</p>
+            </div>
+            <BuyCreditsDialog />
+          </div>
+        )}
       </div>
 
       {selectedConversation ? (

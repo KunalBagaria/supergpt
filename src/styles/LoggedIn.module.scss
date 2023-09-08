@@ -147,11 +147,28 @@
   height: 8rem;
   border-top: 0.0625rem solid var(--border);
   display: flex;
-  flex-direction: column;
   align-items: center;  
-  justify-content: center;
+  justify-content: space-between;
   gap: 0.5rem;
 }
+
+.profileIcon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  background-color: var(--light-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.profileAddress {
+  font-size: small;
+}
+
 
 .chatsComponent {
   width: 100%;
@@ -250,12 +267,13 @@
 }
 
 .styledButton {
+  width: fit;
   background-color: var(--light-purple);
   color: var(--purple);
   border: 0rem;
   outline: none;
   border-radius: 0.3125rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
