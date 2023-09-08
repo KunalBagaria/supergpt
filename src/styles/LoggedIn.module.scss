@@ -144,14 +144,20 @@
 .profilePane {
   margin-top: auto;
   width: 100%;
-  height: 4.69rem;
+  height: 8rem;
   border-top: 0.0625rem solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .chatsComponent {
   width: 100%;
   height: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   position: relative;
 }
@@ -166,10 +172,11 @@
   // transform: translateX(-60%);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .chatField {
-  width: 85%;
+  width: 55%;
   height: 2.75rem;
   flex-shrink: 0;
   border-radius: 0.6875rem;
@@ -240,4 +247,129 @@
     font-weight: 600;
   }
 
+}
+
+.styledButton {
+  background-color: var(--light-purple);
+  color: var(--purple);
+  border: 0rem;
+  outline: none;
+  border-radius: 0.3125rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--light-purple-hover);
+  }
+}
+
+.dialogOverlay {
+  background-color: var(--black-a9);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialogContent {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.dialogTitle {
+  margin: 0;
+  font-weight: 500;
+  color: black;
+  font-size: 17px;
+  margin-bottom: 1rem;
+}
+
+.iconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  &:hover {
+    background-color: var(--light-purple-hover);
+  }
+}
+
+.fieldSet {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // margin-bottom: 15px;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fieldLabel {
+  font-size: 15px;
+  margin-bottom: 1rem;
+  color: black ;
+}
+
+.fieldInput {
+  width: 55%;
+  flex-shrink: 0;
+  border-radius: 0.6875rem;
+  border: 2px solid #EDEDED;
+  background: #FFF;
+  resize: none;
+  padding-left: 1rem;
+  font-family: inherit;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  &::placeholder {
+    color: rgba(92, 95, 98, 0.80);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

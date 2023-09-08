@@ -19,6 +19,8 @@ import { MessageComponent } from "./message";
 import { nanoid } from "nanoid";
 import { saveConversation } from "@/lib/conversations";
 import useConversations from "@/hooks/useConversations";
+import BuyCreditsDialog from "./buy-credits-dialog";
+import useUser from "@/hooks/useUser";
 
 function LoggedInPage() {
   const wallet = useWallet();
@@ -34,6 +36,7 @@ function LoggedInPage() {
     handleSelectConversation,
     handleUpdateConversation,
   } = useConversations();
+  const { user } = useUser();
 
   // function handleChatChange(content: string, role: "user" | "assistant") {
   //   const message: SavedMessage = {
@@ -187,7 +190,10 @@ function LoggedInPage() {
           ))}
         </div>
 
-        <div className={styles.profilePane}></div>
+        <div className={styles.profilePane}>
+          <p>Credits available: {user?.credits}</p>
+          <BuyCreditsDialog />
+        </div>
       </div>
 
       {selectedConversation ? (
