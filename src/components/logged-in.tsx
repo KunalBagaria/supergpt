@@ -27,6 +27,8 @@ function LoggedInPage() {
 
   const [input, setInput] = useState<string>("");
 
+  const [loadingChat, setLoadingChat] = useState<boolean>(false);
+
   const {
     conversations,
     selectedConversation,
@@ -117,6 +119,8 @@ function LoggedInPage() {
       ],
     });
 
+    setLoadingChat(true);
+
     const response = await handleSendMessageRequest(
       wallet.publicKey.toBase58(),
       signature,
@@ -151,6 +155,8 @@ function LoggedInPage() {
         },
       ],
     });
+
+    setLoadingChat(false);
   };
 
   return (
@@ -225,6 +231,12 @@ function LoggedInPage() {
                 <MessageComponent key={index} message={message} />
               ))}
             </div>
+
+            {loadingChat && (
+              <div className={styles.loadingChat}>
+                <p>{"Loading..."}</p>
+              </div>
+            )}
 
             <div className={styles.chatBox}>
               <textarea
