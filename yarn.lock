@@ -3454,6 +3454,11 @@ decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==
 
+decimal.js@^10.4.3:
+  version "10.4.3"
+  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.4.3.tgz#1044092884d245d1b7f65725fa4ad4c6f781cc23"
+  integrity sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==
+
 decode-uri-component@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
@@ -4341,6 +4346,11 @@ gopd@^1.0.1:
   integrity sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==
   dependencies:
     get-intrinsic "^1.1.3"
+
+gpt-3-encoder@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/gpt-3-encoder/-/gpt-3-encoder-1.1.4.tgz#d6cdaacf5824857e133b6065247c757fc7e4fa72"
+  integrity sha512-fSQRePV+HUAhCn7+7HL7lNIXNm6eaFWFbNLOOGtmSJ0qJycyQvj60OvRlH7mee8xAMjBDNRdMXlMwjAbMTDjkg==
 
 graceful-fs@^4.1.2, graceful-fs@^4.2.4:
   version "4.2.11"

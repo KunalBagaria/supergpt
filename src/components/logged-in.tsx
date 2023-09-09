@@ -40,7 +40,7 @@ function LoggedInPage() {
     handleSelectConversation,
     handleUpdateConversation,
   } = useConversations();
-  const { user } = useUser();
+  const { user, refetch } = useUser();
 
   // function handleChatChange(content: string, role: "user" | "assistant") {
   //   const message: SavedMessage = {
@@ -137,6 +137,8 @@ function LoggedInPage() {
         },
       ]
     );
+
+    await refetch();
 
     if (!response.success) return;
 
