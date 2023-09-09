@@ -202,12 +202,29 @@ function LoggedInPage() {
           <div className={styles.profilePane}>
             {/* <p>Credits available: {user?.credits}</p>
           <BuyCreditsDialog /> */}
-            <PersonIcon className={styles.profileIcon} />
+            <svg
+              fill="none"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+              className={styles.profileIcon}
+            >
+              <g
+                stroke="#6f47eb"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <path d="m20 21v-2c0-1.0609-.4214-2.0783-1.1716-2.8284-.7501-.7502-1.7675-1.1716-2.8284-1.1716h-8c-1.06087 0-2.07828.4214-2.82843 1.1716-.75014.7501-1.17157 1.7675-1.17157 2.8284v2" />
+                <path d="m12 11c2.2091 0 4-1.79086 4-4s-1.7909-4-4-4c-2.20914 0-4 1.79086-4 4s1.79086 4 4 4z" />
+              </g>
+            </svg>
             <div className={styles.profileDetails}>
               <p className={styles.profileAddress}>
                 {truncatePubkey(user?.id)}
               </p>
-              <p>{user?.credits} credits</p>
+              <p className={styles.profileCredits}>{user?.credits} credits</p>
             </div>
             <BuyCreditsDialog />
           </div>
