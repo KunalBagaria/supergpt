@@ -73,11 +73,11 @@ const BuyCreditsDialog = () => {
           </fieldset>
 
           <p>
-            Chats are dynamically billed at 1 credit per 1000 characters for
-            GPT-3.5 chats and 25 credits per 1000 characters for GPT-4.0 chats.
+            Chats are dynamically billed according to API usage at 1 credit for
+            ~$0.001 of usage
           </p>
 
-          <p style={{ marginTop: "1rem" }}>1 credit costs $0.01.</p>
+          <p style={{ marginTop: "1rem" }}>1 credit costs $0.001.</p>
 
           <div
             style={{

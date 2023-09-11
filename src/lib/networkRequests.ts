@@ -73,7 +73,7 @@ async function handleBuyCreditsRequest(
       new PublicKey(USDC_ADDRESS),
       valutATA,
       publicKey,
-      credits * 0.01 * 10 ** 6,
+      credits * 0.001 * 10 ** 6,
       6
     )
   );

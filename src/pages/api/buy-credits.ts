@@ -92,13 +92,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       !vaultPostTokenBalance?.uiTokenAmount?.uiAmount ||
       vaultPostTokenBalance.uiTokenAmount.uiAmount -
         vaultPreTokenBalance.uiTokenAmount.uiAmount <
-        credits * 0.01
+        credits * 0.001
     ) {
       return res.status(400).json({
         success: false,
         message: `Invalid transaction: insufficient transfer amount ${
           vaultPostTokenBalance?.uiTokenAmount.uiAmount
-        } < ${credits * 0.01}`,
+        } < ${credits * 0.001}`,
       });
     }
 
