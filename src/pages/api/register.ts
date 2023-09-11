@@ -28,6 +28,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       .status(200)
       .json({ success: true, message: "User created", user: newUser });
   } catch (e) {
+    console.error(e);
     res.status(500).json({ success: false, error: e });
   }
 }

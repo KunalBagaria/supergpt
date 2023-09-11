@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (!verifyMethod(req, res, "GET")) return;
-    const requiredKeys = ["address", "signature"];
 
     const address = req.query.address as string;
 
@@ -18,6 +17,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     return res.status(200).json({ success: true, user });
   } catch (e) {
+    console.error(e);
     res.status(500).json({ success: false, error: e });
   }
 }
