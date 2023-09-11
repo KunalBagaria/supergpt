@@ -1,5 +1,6 @@
 import { authenticate, verifyKeys, verifyMethod } from "@/lib/server";
 import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "db";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
