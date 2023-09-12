@@ -147,8 +147,16 @@
   height: 7rem;
   border-top: 0.0625rem solid var(--border);
   display: flex;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   align-items: center;  
   justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.profileUser {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -170,15 +178,26 @@
   display: flex;
   flex-direction: column;
   gap: 0rem;
-
+  margin-left: 0.5rem;
+  justify-content: center;
 }
 
 .profileAddress {
-  font-size: small;
+
+
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 .profileCredits {
-  font-weight: bold;
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 
