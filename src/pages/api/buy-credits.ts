@@ -1,5 +1,5 @@
 import { candypay } from "@/lib/candypay";
-import { USDC_ADDRESS } from "@/lib/constants";
+import { MAINNET_ENDPOINT, USDC_ADDRESS } from "@/lib/constants";
 import { authenticate, verifyKeys, verifyMethod } from "@/lib/server";
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { Connection, PublicKey, TransactionResponse } from "@solana/web3.js";
@@ -37,7 +37,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     //   ],
     // });
 
-    const connection = new Connection(process.env.RPC as string, "confirmed");
+    const connection = new Connection(MAINNET_ENDPOINT, "confirmed");
 
     const tx = (await connection.getTransaction(txSig, {
       commitment: "confirmed",
