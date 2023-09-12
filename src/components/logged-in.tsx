@@ -23,6 +23,7 @@ import BuyCreditsDialog from "./buy-credits-dialog";
 import useUser from "@/hooks/useUser";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { truncatePubkey } from "@/lib/truncate";
+import toast from "react-hot-toast";
 
 function LoggedInPage() {
   const wallet = useWallet();
@@ -113,6 +114,10 @@ function LoggedInPage() {
     if (!selectedConversation) return;
     if (!selectedModel) return;
 
+    if (user.credits < 1) {
+      return toast.error("You don't have enough credits");
+    }
+
     handleUpdateConversation({
       ...selectedConversation,
       messages: [
@@ -144,9 +149,10 @@ function LoggedInPage() {
 
     handleUpdateConversation({
       ...selectedConversation,
-      name: (selectedConversation.name = "New Conversation"
-        ? input
-        : selectedConversation.name),
+      name:
+        selectedConversation.name == "New Conversation"
+          ? input
+          : selectedConversation.name,
       messages: [
         ...selectedConversation.messages,
         {
