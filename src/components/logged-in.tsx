@@ -255,7 +255,7 @@ function LoggedInPage() {
               onClick={() => handleModelChange(4.0)}
               className={
                 styles.modelButton +
-                (selectedModel === "4.0" ? ` ${styles.active}` : "")
+                (selectedModel === "4" ? ` ${styles.active}` : "")
               }
             >
               {"GPT 4.0"}
