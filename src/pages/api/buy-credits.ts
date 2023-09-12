@@ -4,6 +4,7 @@ import { authenticate, verifyKeys, verifyMethod } from "@/lib/server";
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { Connection, PublicKey, TransactionResponse } from "@solana/web3.js";
 import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "db";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
