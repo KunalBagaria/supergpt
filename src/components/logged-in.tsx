@@ -177,13 +177,15 @@ function LoggedInPage() {
           <Image src={logo} alt="SuperGPT Logo" />
         </div>
 
-        <button
-          onClick={() => handleNewConversation()}
-          className={styles.newChat}
-        >
-          <Image src={plus} alt="" />
-          {"NEW CHAT"}
-        </button>
+        <div className={styles.sidebarPadding}>
+          <button
+            onClick={() => handleNewConversation()}
+            className={styles.newChat}
+          >
+            <Image src={plus} alt="" />
+            {"NEW CHAT"}
+          </button>
+        </div>
 
         <div className={styles.recentThreads}>
           <p className={styles.recentThreadsTitle}>{"Recent Threads"}</p>
